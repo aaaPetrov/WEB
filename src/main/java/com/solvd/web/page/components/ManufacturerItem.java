@@ -1,4 +1,4 @@
-package page.components;
+package com.solvd.web.page.components;
 
 import com.qaprosoft.carina.core.foundation.webdriver.decorator.ExtendedWebElement;
 import com.qaprosoft.carina.core.gui.AbstractUIObject;
@@ -6,15 +6,15 @@ import org.openqa.selenium.SearchContext;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 
-public class RegionItem extends AbstractUIObject {
+public class ManufacturerItem extends AbstractUIObject {
 
-    @FindBy(xpath = ".//input")
+    @FindBy(xpath = ".//input[@type='checkbox']")
     private ExtendedWebElement checkBox;
 
-    @FindBy(xpath = ".//label")
+    @FindBy(xpath = ".//*[contains(@class, 'checkbox-text')]")
     private ExtendedWebElement label;
 
-    public RegionItem(WebDriver driver, SearchContext searchContext) {
+    public ManufacturerItem(WebDriver driver, SearchContext searchContext) {
         super(driver, searchContext);
     }
 
@@ -26,11 +26,11 @@ public class RegionItem extends AbstractUIObject {
         return this.label;
     }
 
-    public void checkBoxClick() {
+    public void clickCheckBox() {
         this.checkBox.check();
     }
 
-    public String labelText() {
+    public String getLabelText() {
         return this.label.getText();
     }
 

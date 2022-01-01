@@ -1,9 +1,9 @@
-package page;
+package com.solvd.web.page;
 
 import com.qaprosoft.carina.core.foundation.webdriver.decorator.ExtendedWebElement;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
-import page.components.NewsDropdownMenu;
+import com.solvd.web.page.components.NewsDropdownMenu;
 
 public class AbstractPage extends com.qaprosoft.carina.core.gui.AbstractPage {
 

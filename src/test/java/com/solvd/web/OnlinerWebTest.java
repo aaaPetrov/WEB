@@ -1,20 +1,15 @@
 package com.solvd.web;
 
 import com.qaprosoft.carina.core.foundation.IAbstractTest;
-import com.qaprosoft.carina.core.foundation.webdriver.decorator.ExtendedWebElement;
-import com.sun.source.tree.AssertTree;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.ui.Wait;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
-import page.*;
-import page.components.SearchModal;
-import page.components.NewsDropdownMenu;
-import page.components.*;
+import com.solvd.web.page.*;
+import com.solvd.web.page.components.NewsDropdownMenu;
+import com.solvd.web.page.components.*;
+import com.solvd.web.service.AbstractService;
+import com.solvd.web.service.SearchModalService;
 
 import java.util.List;
 import java.util.Locale;
@@ -22,7 +17,7 @@ import java.util.stream.IntStream;
 
 public class OnlinerWebTest implements IAbstractTest {
 
-    @Test(groups = "toNotBeforeMethods")
+    @Test
     public void checkManufactureFilterTest() {
         HeadphonesProductPage headphonesProductPage = new HeadphonesProductPage(getDriver());
         headphonesProductPage.open();
@@ -35,9 +30,8 @@ public class OnlinerWebTest implements IAbstractTest {
                 .orElseThrow(() -> new RuntimeException("There is no manufacturer label named 'Sony'"))
                 .clickCheckBox();
 
-        AbstractPage abstractPage = new AbstractPage(getDriver());
-        ExtendedWebElement webElement = abstractPage.getStateAnimation();
-        webElement.waitUntilElementDisappear(10);
+        AbstractService abstractService = new AbstractService(getDriver());
+        abstractService.waitStateAnimation(10);
 
         List<ProductBlock> productBlocks = headphonesProductPage.getProductBlocks();
 
@@ -77,13 +71,12 @@ public class OnlinerWebTest implements IAbstractTest {
         homePage.open();
         homePage.getHeader().writeInSearchLine("blackview");
 
-        SearchModal searchModal = new SearchModal(getDriver());
-        getDriver().switchTo().frame(searchModal.getRootElement());
-        Wait<WebDriver> webDriverWait = new WebDriverWait(getDriver(), 5);
-        webDriverWait.until(webDriver -> !searchModal.getSearchedItems().isEmpty());
+        SearchModalService searchModalService = new SearchModalService(getDriver());
+        searchModalService.switchAndWait(5);
 
-        List<SearchedItem> searchedItems = searchModal.getSearchedItems();
+        List<SearchedItem> searchedItems = searchModalService.getSearchedItems();
         Assert.assertFalse(searchedItems.isEmpty(), "No search result found.");
+
         SoftAssert softAssert = new SoftAssert();
         searchedItems.forEach(searchedItem -> softAssert.assertTrue(searchedItem.getItemTitleText().toLowerCase(Locale.ROOT).contains("blackview")));
         softAssert.assertAll();
@@ -91,7 +84,7 @@ public class OnlinerWebTest implements IAbstractTest {
 
     @DataProvider(name = "giftProductItemNames")
     public Object[][] itemNames() {
-        return new Object[][]{{ List.of(
+        return new Object[][]{{List.of(
                 "электроника",
                 "компьютеры и сети",
                 "бытовая техника",
@@ -105,13 +98,12 @@ public class OnlinerWebTest implements IAbstractTest {
 
     @Test(dataProvider = "giftProductItemNames")
     public void checkGiftCatalogTest(List<String> giftProductItemNames) {
-        HomePage homePage  = new HomePage(getDriver());
+        HomePage homePage = new HomePage(getDriver());
         homePage.open();
         homePage.giftCatalogLinkClick();
 
-        AbstractPage abstractPage = new AbstractPage(getDriver());
-        ExtendedWebElement webElement = abstractPage.getStateAnimation();
-        webElement.waitUntilElementDisappear(5);
+        AbstractService abstractService = new AbstractService(getDriver());
+        abstractService.waitStateAnimation(5);
 
         GiftProductPage giftProductPage = new GiftProductPage(getDriver());
         Assert.assertTrue(giftProductPage.getSuperPricesSlider().isUIObjectPresent());
@@ -127,7 +119,7 @@ public class OnlinerWebTest implements IAbstractTest {
 
     @DataProvider(name = "serviceOfferRegionNames")
     public Object[][] regionNames() {
-        return new Object[][] {{"Минск"}, {"Брест"}, {"Витебск"}, {"Гомель"}, {"Гродно"}, {"Могилев"}};
+        return new Object[][]{{"Минск"}, {"Брест"}, {"Витебск"}, {"Гомель"}, {"Гродно"}, {"Могилев"}};
     }
 
     @Test(dataProvider = "serviceOfferRegionNames")
@@ -136,9 +128,8 @@ public class OnlinerWebTest implements IAbstractTest {
         homePage.open();
         homePage.getHeader().getTopMenu().clickMenuItem("Услуги");
 
-        AbstractPage abstractPage = new AbstractPage(getDriver());
-        ExtendedWebElement webElement = abstractPage.getStateAnimation();
-        webElement.waitUntilElementDisappear(5);
+        AbstractService abstractService = new AbstractService(getDriver());
+        abstractService.waitStateAnimation(5);
 
         ServicesPage servicesPage = new ServicesPage(getDriver());
         Assert.assertTrue(servicesPage.getRegionSelectLine().isPresent());
@@ -146,7 +137,7 @@ public class OnlinerWebTest implements IAbstractTest {
         Assert.assertTrue(servicesPage.getRegionDropdown().isUIObjectPresent());
 
         servicesPage.getRegionDropdown().regionItemCheckBoxClock(region);
-        webElement.waitUntilElementDisappear(5);
+        abstractService.waitStateAnimation(5);
         List<ServiceOffer> serviceOffers = servicesPage.getServiceOffers();
 
         SoftAssert softAssert = new SoftAssert();

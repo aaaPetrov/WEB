@@ -1,11 +1,11 @@
-package page;
+package com.solvd.web.page;
 
 import com.qaprosoft.carina.core.foundation.utils.Configuration;
 import com.qaprosoft.carina.core.foundation.utils.R;
 import com.qaprosoft.carina.core.foundation.webdriver.decorator.ExtendedWebElement;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
-import page.components.Header;
+import com.solvd.web.page.components.Header;
 
 public class HomePage extends AbstractPage {
 

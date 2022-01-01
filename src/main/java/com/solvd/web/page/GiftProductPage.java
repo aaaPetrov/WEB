@@ -1,10 +1,10 @@
-package page;
+package com.solvd.web.page;
 
 import com.qaprosoft.carina.core.foundation.utils.R;
 import org.openqa.selenium.WebDriver;
 import com.qaprosoft.carina.core.gui.AbstractPage;
 import org.openqa.selenium.support.FindBy;
-import page.components.SuperPricesSlider;
+import com.solvd.web.page.components.SuperPricesSlider;
 
 public class GiftProductPage extends AbstractPage {
 

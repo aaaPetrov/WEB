@@ -1,4 +1,4 @@
-package page.components;
+package com.solvd.web.page.components;
 
 import com.qaprosoft.carina.core.foundation.webdriver.decorator.ExtendedWebElement;
 import com.qaprosoft.carina.core.gui.AbstractUIObject;
@@ -20,7 +20,7 @@ public class ServiceOffer extends AbstractUIObject {
     }
 
     public String regionSpanText() {
-       return this.regionSpan.getText();
+        return this.regionSpan.getText();
     }
 
 }

@@ -1,11 +1,11 @@
-package page;
+package com.solvd.web.page;
 
 import com.qaprosoft.carina.core.foundation.utils.R;
 import com.qaprosoft.carina.core.gui.AbstractPage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
-import page.components.FilterBlock;
-import page.components.ProductBlock;
+import com.solvd.web.page.components.FilterBlock;
+import com.solvd.web.page.components.ProductBlock;
 
 import java.util.List;
 

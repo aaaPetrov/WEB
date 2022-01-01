@@ -1,11 +1,10 @@
-package page.components;
+package com.solvd.web.page.components;
 
 
 import com.qaprosoft.carina.core.gui.AbstractUIObject;
 import org.openqa.selenium.SearchContext;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
-import page.components.NewsCategory;
 
 import java.util.List;
 

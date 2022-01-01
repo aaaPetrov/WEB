@@ -1,4 +1,4 @@
-package page.components;
+package com.solvd.web.page.components;
 
 import com.qaprosoft.carina.core.foundation.webdriver.decorator.ExtendedWebElement;
 import com.qaprosoft.carina.core.gui.AbstractUIObject;
