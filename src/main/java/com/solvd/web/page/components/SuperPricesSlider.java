@@ -9,7 +9,7 @@ import java.util.List;
 
 public class SuperPricesSlider extends AbstractUIObject {
 
-    @FindBy(xpath = ".//a")
+    @FindBy(xpath = ".//a[contains(@class, 'schema-slider__item')]")
     private List<SuperPriceItem> superPriceItems;
 
     public SuperPricesSlider(WebDriver driver, SearchContext searchContext) {

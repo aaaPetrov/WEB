@@ -8,7 +8,7 @@ import org.openqa.selenium.support.FindBy;
 
 public class SearchedItem extends AbstractUIObject {
 
-    @FindBy(xpath = ".//div[@class='product__title']/a")
+    @FindBy(xpath = ".//div[@class='product__title']//a[@class='product__title-link']")
     private ExtendedWebElement itemTitle;
 
     public SearchedItem(WebDriver driver, SearchContext searchContext) {

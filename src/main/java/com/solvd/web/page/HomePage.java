@@ -15,9 +15,6 @@ public class HomePage extends AbstractPage {
     @FindBy(xpath = "//*[contains(@class, 'grid-6')]/header/a")
     private ExtendedWebElement giftCatalogLink;
 
-    //*[contains(@class, 'tiles_grid_4')]//*[contains(@class, 'header')
-    //*[contains(@class, 'tiles_grid_4')]//*[contains(@class, 'excerpt')]
-
     public HomePage(WebDriver driver) {
         super(driver);
         setPageAbsoluteURL(R.CONFIG.get(Configuration.Parameter.URL.getKey()));

@@ -17,7 +17,7 @@ public class ServicesPage extends AbstractPage {
     @FindBy(xpath = "//*[contains(@class, 'dropdown-style__columns')]")
     private RegionDropdownMenu regionDropdown;
 
-    @FindBy(xpath = "//*[@class='com.solvd.web.service-offers__flex']")
+    @FindBy(xpath = "//*[@class='service-offers__flex']")
     private List<ServiceOffer> serviceOffers;
 
     public ServicesPage(WebDriver driver) {

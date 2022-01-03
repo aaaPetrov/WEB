@@ -11,7 +11,7 @@ public class SearchModal extends AbstractUIObject {
 
     private final By rootElement = By.xpath("//*[@class='modal-iframe']");
 
-    @FindBy(xpath = "//*[@id='search-com.solvd.web.page']//li[contains(@class, 'search__result')]")
+    @FindBy(xpath = "//*[@id='search-page']//li[contains(@class, 'search__result')]")
     private List<SearchedItem> searchedItems;
 
     public SearchModal(WebDriver driver) {

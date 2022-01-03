@@ -9,7 +9,7 @@ import com.solvd.web.page.components.SearchedItem;
 
 import java.util.List;
 
-public class SearchModalService implements IAbstractTest {
+public class SearchModalService{
 
     private final SearchModal searchModal;
 
@@ -18,8 +18,8 @@ public class SearchModalService implements IAbstractTest {
     }
 
     public void switchAndWait(int seconds) {
-        getDriver().switchTo().frame(this.searchModal.getRootElement());
-        Wait<WebDriver> webDriverWait = new WebDriverWait(getDriver(), seconds);
+        this.searchModal.getDriver().switchTo().frame(this.searchModal.getRootElement());
+        Wait<WebDriver> webDriverWait = new WebDriverWait(this.searchModal.getDriver(), seconds);
         webDriverWait.until(webDriver -> !this.searchModal.getSearchedItems().isEmpty());
     }
 
