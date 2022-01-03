@@ -12,7 +12,7 @@ public class HomePage extends AbstractPage {
     @FindBy(xpath = "//header[@class='g-top']")
     private Header header;
 
-    @FindBy(xpath = "//*[contains(@class, 'grid-6')]/header/a")
+    @FindBy(xpath = "//*[contains(@class, 'grid-6')]/header/a[contains(@href, 'superprice')]")
     private ExtendedWebElement giftCatalogLink;
 
     public HomePage(WebDriver driver) {
